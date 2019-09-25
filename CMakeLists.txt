@@ -7,4 +7,6 @@ project (ThreeD)
 
 set(CMAKE_JAVA_COMPILE_FLAGS "-source" "7" "-target" "7")
 
-add_jar(ThreeD SOURCES Main.java ThreeD/Engine/Renderer.java ThreeD/Engine/Space.java ThreeD/Engine/Camera.java ThreeD/Linear/Vector.java ThreeD/Linear/Matrix.java)
+add_jar(ThreeD SOURCES Main.java ThreeD/Engine/Renderer.java
+  ThreeD/Engine/Space.java ThreeD/Engine/Camera.java ThreeD/Linear/Vector.java
+  ThreeD/Linear/Matrix.java ThreeD/Engine/FileReader.java)

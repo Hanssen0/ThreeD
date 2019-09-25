@@ -5,29 +5,32 @@ import ThreeD.Linear.Vector;
 import ThreeD.Linear.Matrix;
 public class Camera {
   private Vector position_;
-  private Vector facing_;
+  private Vector x_;
+  private Vector y_;
   private Renderer renderer_;
   private Matrix rotate_matrix_;
-  public Camera() {
+  public Camera(Vector x, Vector y) {
+    x_ = x;
+    y_ = y;
     rotate_matrix_ = new Matrix();
-    rotate_matrix_.ToSurface(new Vector(new int[]{1, 0, 0}), new Vector(new int[]{0, 0, 1}));
+    rotate_matrix_.ToSurface(x, y);
   }
   public void Bind(Renderer renderer) {
     renderer_ = renderer;
   }
   public void Render(Space space) {
     for (Vector[] surface: space.surfaces_) {
-      renderer_.RenderSurface(new Vector(new int[]{surface[0].Get(0), surface[0].Get(2)}),
-                              new Vector(new int[]{surface[1].Get(0), surface[1].Get(2)}),
-                              new Vector(new int[]{surface[2].Get(0), surface[2].Get(2)}));
+      renderer_.RenderSurface(rotate_matrix_.Multiply(surface[0]),
+                              rotate_matrix_.Multiply(surface[1]),
+                              rotate_matrix_.Multiply(surface[2]));
     }
     for (Vector[] line: space.lines_) {
-      renderer_.RenderLine(new Vector(new int[]{line[0].Get(0), line[0].Get(2)}),
-                           new Vector(new int[]{line[1].Get(0), line[1].Get(2)}));
+      renderer_.RenderLine(rotate_matrix_.Multiply(line[0]),
+                           rotate_matrix_.Multiply(line[1]));
+
     }
     for (Vector point: space.points_) {
-      renderer_.RenderPoint(new Vector(new int[]{point.Get(0), point.Get(2)}));
+      renderer_.RenderPoint(rotate_matrix_.Multiply(point));
     }
-    rotate_matrix_.Print();
   }
 }

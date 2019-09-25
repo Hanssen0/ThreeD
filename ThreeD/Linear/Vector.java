@@ -1,10 +1,10 @@
 package ThreeD.Linear;
 public class Vector {
-  private int position_[];
+  private double position_[];
   public Vector(int size) {
-    position_ = new int[size];
+    position_ = new double[size];
   };
-  public Vector(int position[]) {
+  public Vector(double position[]) {
     position_ = position.clone();
   };
   @Override
@@ -12,11 +12,11 @@ public class Vector {
     return new Vector(position_);
   }
   public int Dimension() {return position_.length;}
-  public void Set(int pos, int value) {
+  public void Set(int pos, double value) {
     assert position_.length > pos;
     position_[pos] = value;
   }
-  public int Get(int pos) {
+  public double Get(int pos) {
     assert position_.length > pos;
     return position_[pos];
   }
@@ -39,7 +39,7 @@ public class Vector {
     return true;
   }
   public void Swap(Vector vector) {
-    int position[] = position_;
+    double position[] = position_;
     position_ = vector.position_;
     vector.position_ = position;
   }
