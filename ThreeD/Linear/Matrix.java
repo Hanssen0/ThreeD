@@ -19,9 +19,13 @@ public class Matrix {
     return result;
   }
   public void ToSurface(Vector x, Vector y) {
-    matrix_ = new double[][]{new double[]{x.Get(0), y.Get(0)},
-                             new double[]{x.Get(1), y.Get(1)},
-                             new double[]{x.Get(2), y.Get(2)}};
+    Vector x_normal = x.clone();
+    x_normal.DivideEqual(x.GetLength());
+    Vector y_normal = y.clone();
+    y_normal.DivideEqual(y.GetLength());
+    matrix_ = new double[][]{new double[]{x_normal.Get(0), y_normal.Get(0)},
+                             new double[]{x_normal.Get(1), y_normal.Get(1)},
+                             new double[]{x_normal.Get(2), y_normal.Get(2)}};
   }
   public void Print() {
     for (int j = 0; j < matrix_[0].length; ++j) {

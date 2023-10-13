@@ -20,6 +20,13 @@ public class Vector {
     assert position_.length > pos;
     return position_[pos];
   }
+  public double GetLength() {
+    double result = 0;
+    for (int i = 0; i < position_.length; ++i) {
+      result += Math.pow(position_[i], 2);
+    }
+    return Math.sqrt(result);
+  }
   public void AddEqual(Vector vector) {
     assert vector.position_.length == position_.length;
     for (int i = 0; i < position_.length; ++i) {
@@ -37,6 +44,11 @@ public class Vector {
       if (position_[i] != vector.position_[i]) return false;
     }
     return true;
+  }
+  public void DivideEqual(double number) {
+    for (int i = 0; i < position_.length; ++i) {
+      position_[i] /= number;
+    }
   }
   public void Swap(Vector vector) {
     double position[] = position_;

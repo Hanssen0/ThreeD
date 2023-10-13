@@ -17,10 +17,11 @@ public class Main{
     main_file.Load(main_engine);
     Renderer main_renderer = new Renderer(40, 40);
     Scanner input = new Scanner(System.in);
-    for (int i = 0; i <= 100; i += 1) {
+    for (int i = 0; i <= 200; i += 1) {
       main_renderer.Fill(' ');
       Camera main_camera = new Camera(new Vector(new double[]{1, 0, 0}),
-                                      new Vector(new double[]{0, (double)i / 100,Math.sqrt(1 - Math.pow((double)i / 100, 2))}));
+                                      new Vector(new double[]{0, (double)i / 100,
+                                                              Math.sqrt(4 - Math.pow((double)i / 100, 2))}));
       main_camera.Bind(main_renderer);
       main_camera.Render(main_engine);
       System.out.print("-----------------------------------------------------");

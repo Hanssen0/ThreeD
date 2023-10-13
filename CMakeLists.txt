@@ -5,7 +5,7 @@ include(UseJava)
 
 project (ThreeD)
 
-set(CMAKE_JAVA_COMPILE_FLAGS "-source" "7" "-target" "7")
+set(CMAKE_JAVA_COMPILE_FLAGS "-source" "8" "-target" "8")
 
 add_jar(ThreeD SOURCES Main.java ThreeD/Engine/Renderer.java
   ThreeD/Engine/Space.java ThreeD/Engine/Camera.java ThreeD/Linear/Vector.java
